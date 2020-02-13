@@ -29,19 +29,16 @@ def calculatePlayerScore(data):
         return totalPoints
 
 class Performance(Resource):
-    def get(self,tournament,player):
+    def get(self,tournament,player,date):
         response = site.api('cargoquery',
                             limit='max',
                             tables="ScoreboardGame=SG,ScoreboardPlayer=SP",
                             fields="SP.Name,SP.Champion,SP.Kills,SP.Deaths,SP.Assists,SP.Gold,SP.CS,SP.PlayerWin,SP.Role,SG.DateTime_UTC,SG.Gamelength_Number,SG.N_GameInMatch",
-                            where=f"SG.Tournament like '{tournament}'and SP.Name like '{player}'",
+                            where=f"SP.Name like '{player}' and SG.Tournament like '{tournament}'and SG.DateTime_UTC >= '{date}'",
                             join_on = "SG.UniqueGame =SP.UniqueGame",
-                            order_by=f"SG.DateTime_UTC"
+                            order_by=f"SG.DateTime_UTC desc"
                             )
         data = response['cargoquery']
-        
-        points = calculatePlayerScore(data)
+        #points = calculatePlayerScore(data)
 
-        return points
-
-    
+        return data

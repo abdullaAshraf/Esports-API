@@ -17,7 +17,7 @@ class Tournament(Resource):
                             limit='max',
                             tables="Tournaments",
                             fields="Name,Date,Region",
-                            where=f"EventType = 'Offline' and Year ='{2019}' and TournamentLevel = 'Primary' and IsQualifier = 'No' and IsPlayoffs = 'No' and Split = '{split}'"
+                            where=f"EventType = 'Offline' and Year ='{year}' and TournamentLevel = 'Primary' and IsQualifier = 'No' and IsPlayoffs = 'No' and Split = '{split}'"
                             )
         data = response['cargoquery']
         return data
