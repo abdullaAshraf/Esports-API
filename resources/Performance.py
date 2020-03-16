@@ -20,7 +20,7 @@ def calculatePlayerScore(data):
             gamePoints -= 0.5*int(game['Deaths'])
             gamePoints += 1.5*int(game['Assists'])
             gamePoints += 0.01*int(game['CS'])
-            if int(game['Kills']) + 1.5*int(game['Assists']) >= 10 :
+            if int(game['Kills']) + int(game['Assists']) >= 10 :
                 gamePoints += 2
             if game['PlayerWin'] == 'Yes' :
                 gamePoints += 5
@@ -36,7 +36,7 @@ class Performance(Resource):
                             fields="SP.Name,SP.Champion,SP.Kills,SP.Deaths,SP.Assists,SP.Gold,SP.CS,SP.PlayerWin,SP.Role,SG.DateTime_UTC,SG.Gamelength_Number,SG.N_GameInMatch",
                             where=f"SP.Name like '{player}' and SG.Tournament like '{tournament}'and SG.DateTime_UTC >= '{date}'",
                             join_on = "SG.UniqueGame =SP.UniqueGame",
-                            order_by=f"SG.DateTime_UTC desc"
+                            order_by=f"SG.DateTime_UTC"
                             )
         data = response['cargoquery']
         #points = calculatePlayerScore(data)
