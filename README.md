@@ -21,14 +21,19 @@ get all players in pro League of legends esports.
 - /Team/'Tournament Name':
 get all teams that currently partcipate in a specific tournament.
 
--/Tournament:
+- /Tournament:
 get all current season major tournaments.
 
--/Game/'Tournament Name':
+- /Game/'Tournament Name':
 get all games played in a tournament.
 
--/TeamGames/'Tournament Name'/'Team Name'/'Timestamp'
+- /TeamGames/'Tournament Name'/'Team Name'/'Timestamp'
 get games played by a specific team in a tournament stating at a current timestamp.
 
--/Performance/'Tournament Name'/'Player Tag'/'Timestamp'
+- /Performance/'Tournament Name'/'Player Tag'/'Timestamp'
 get games played by a specific player in a tournament stating at a current timestamp.
+
+## How to use
+
+You can either build it and upload on any hosting server, or use mine which is already hosted at:
+https://esports.now.sh/
