@@ -13,11 +13,18 @@ class Tournament(Resource):
             split = 'Summer'
         else:
             split = 'Spring'
+
+        regions = ['Korea','North America','Europe','China']
+        reigonsString = 'false'
+        for reg in regions:
+            reigonsString += " or Region = '" + reg + "'"
+        
+
         response = site.api('cargoquery',
                             limit='max',
                             tables="Tournaments",
-                            fields="Name,Date,Region",
-                            where=f"EventType = 'Offline' and Year ='{year}' and TournamentLevel = 'Primary' and IsQualifier = 'No' and IsPlayoffs = 'No' and Split = '{split}'"
+                            fields="Name,Date,Region,EventType",
+                            where=f"TournamentLevel = 'Primary' and Year ='{year}' and IsQualifier = 'No' and IsPlayoffs = 'No' and Split = '{split}'  and ( {reigonsString} )"
                             )
         data = response['cargoquery']
         return data

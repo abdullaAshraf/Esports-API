@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 from resources.Player import Player
+from resources.Player import Players
 from resources.Team import Team
 from resources.Tournament import Tournament
 from resources.Game import Game
@@ -11,6 +12,7 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(Player, '/Player/<string:teamName>')
+api.add_resource(Players, '/Players')
 api.add_resource(Team, '/Team/<string:tournament>')
 api.add_resource(Tournament, '/Tournament/')
 api.add_resource(Game, '/Game/<string:tournament>')
