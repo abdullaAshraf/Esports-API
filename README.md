@@ -12,11 +12,11 @@ so this API is like a simple proxy that deal with the technicalities about conne
 
 ## Endpoints
 
-- /Players/'Team Name':
+- /Player/'Team Name':
 get all current players inside a League of legends team.
 
-- /Players/All:
-get all players in pro League of legends esports.
+- /Players/:
+get all players in pro League of legends esports in current season (LPL,LCK,LCS,LEC).
 
 - /Team/'Tournament Name':
 get all teams that currently partcipate in a specific tournament.
@@ -30,8 +30,10 @@ get all games played in a tournament.
 - /TeamGames/'Tournament Name'/'Team Name'/'Timestamp'
 get games played by a specific team in a tournament stating at a current timestamp.
 
-- /Performance/'Tournament Name'/'Player Tag'/'Timestamp'
+- /Performance/'Tournament Name'/'Player ID'/'Timestamp'
 get games played by a specific player in a tournament stating at a current timestamp.
+Player ID is the player tag followed by the player name in the format: 'tag' ('name')
+it is the way the API uses to differentiate between players with the same tag
 
 ## How to use
 
