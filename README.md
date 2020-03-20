@@ -24,14 +24,14 @@ get all teams that currently partcipate in a specific tournament.
 - /Tournament:
 get all current season major tournaments.
 
-- /Game/'Tournament Name':
-get all games played in a tournament.
+- /Game/'Timestamp':
+get all games played in the 4 major tournaments starting at the timestamp.
 
 - /TeamGames/'Tournament Name'/'Team Name'/'Timestamp'
-get games played by a specific team in a tournament stating at a current timestamp.
+get games played by a specific team in a tournament stating at thr timestamp.
 
 - /Performance/'Tournament Name'/'Player ID'/'Timestamp'
-get games played by a specific player in a tournament stating at a current timestamp.
+get games played by a specific player in a tournament stating at the timestamp.
 Player ID is the player tag followed by the player name in the format: 'tag' ('name')
 it is the way the API uses to differentiate between players with the same tag
 

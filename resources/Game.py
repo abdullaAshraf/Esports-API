@@ -1,16 +1,22 @@
 from flask_restful import Resource
 import mwclient
+from  resources.Tournament import getTournaments
 site = mwclient.Site('lol.gamepedia.com', path='/')
 
 
 class Game(Resource):
-    def get(self,tournament):
+    def get(self,date):
+        tournaments =  getTournaments()
+        conditionString = "false"
+        for tournament in tournaments:
+            conditionString += f" or SG.Tournament like '{tournament}'"
         response = site.api('cargoquery',
-                            limit='max',
-                            tables="ScoreboardGame",
-                            fields="Tournament,Team1,Team2,WinTeam,DateTime_UTC,UniqueGame",
-                            where=f"Tournament like '{tournament}'",
-                            order_by=f"DateTime_UTC"
+                           limit='max',
+                            tables="ScoreboardGame=SG,ScoreboardPlayer=SP",
+                            fields="SP.Name,SP.Link,SP.Champion,SP.Kills,SP.Deaths,SP.Assists,SP.Gold,SP.CS,SP.PlayerWin,SP.Role,SG.DateTime_UTC,SG.Gamelength_Number,SG.N_GameInMatch",
+                            where= f"SG.DateTime_UTC >= '{date}' and ({conditionString})",
+                            join_on = "SG.UniqueGame =SP.UniqueGame",
+                            order_by=f"SG.DateTime_UTC DESC"
                             )
         data = response['cargoquery']
         return data

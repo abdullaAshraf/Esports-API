@@ -15,7 +15,7 @@ api.add_resource(Player, '/Player/<string:teamName>')
 api.add_resource(Players, '/Players')
 api.add_resource(Team, '/Team/<string:tournament>')
 api.add_resource(Tournament, '/Tournament/')
-api.add_resource(Game, '/Game/<string:tournament>')
+api.add_resource(Game, '/Game/<string:date>')
 api.add_resource(TeamGames, '/TeamGames/<string:tournament>/<string:team>/<string:date>')
 api.add_resource(Performance, '/Performance/<string:tournament>/<string:player>/<string:date>')
 
